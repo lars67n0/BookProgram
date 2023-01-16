@@ -1,0 +1,52 @@
+﻿@page
+@model BookProgram.Pages.Account.IndexModel
+@{
+}
+<div class="container border bg-light" style="padding: 15px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        @*//UserName*@
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Login.UserName"></label>
+            </div>
+
+            <div class="col-5">
+                <input type="text" asp-for="Login.UserName" class="form-control" />
+            </div>
+
+            <span class="text-danger" asp-validation-for="Login.UserName"></span>
+
+        </div>
+
+        @*//PassWord*@
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Login.Password"></label>
+            </div>
+
+            <div class="col-5">
+                <input type="password" asp-for="Login.Password" class="form-control" />
+            </div>
+
+            <span class="text-danger" asp-validation-for="Login.Password"></span>
+
+        </div>
+
+        @*//login Button*@
+
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Login" />
+            </div>
+
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
