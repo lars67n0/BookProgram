@@ -16,9 +16,25 @@ namespace BookProgram.Data
 
         public DbSet<BookProgram.Model.BookList> BookList { get; set; } = default!;
 
-        public DbSet<BookProgram.Model.Hold> Hold { get; set; }
+        public DbSet<BookProgram.Model.Holds> Hold { get; set; }
 
         public DbSet<BookProgram.Model.Orders> Orders { get; set; }
+
+        public DbSet<BookProgram.Model.Education> Education { get; set; }
+
+        public DbSet<BookProgram.Model.Teacher> Teacher { get; set; }
+
+        
+
+        public DbSet<BookProgram.Model.Fag> Fag { get; set; }
+
+        
+
+        public DbSet<BookProgram.Model.Semester> Semester { get; set; }
+
+        
+
+
 
         
     }

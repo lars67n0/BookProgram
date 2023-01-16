@@ -4,6 +4,7 @@ using BookProgram.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookProgram.Migrations
 {
     [DbContext(typeof(BookProgramContext))]
-    partial class BookProgramContextModelSnapshot : ModelSnapshot
+    [Migration("20230116093822_SemesterTable")]
+    partial class SemesterTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,42 +50,7 @@ namespace BookProgram.Migrations
                     b.ToTable("BookList");
                 });
 
-            modelBuilder.Entity("BookProgram.Model.Education", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("EducationName")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Education");
-                });
-
-            modelBuilder.Entity("BookProgram.Model.Fag", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("FagName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Fag");
-                });
-
-            modelBuilder.Entity("BookProgram.Model.Holds", b =>
+            modelBuilder.Entity("BookProgram.Model.Hold", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -96,15 +63,15 @@ namespace BookProgram.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<int>("EducationID")
-                        .HasColumnType("int");
-
                     b.Property<int>("TeacherID")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.Property<string>("TeacherName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasIndex("EducationID");
+                    b.HasKey("ID");
 
                     b.HasIndex("TeacherID");
 
@@ -122,50 +89,20 @@ namespace BookProgram.Migrations
                     b.Property<int>("BookListID")
                         .HasColumnType("int");
 
-                    b.Property<int>("EducationID")
+                    b.Property<int>("HoldID")
                         .HasColumnType("int");
 
-                    b.Property<string>("OrderValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderValue")
+                        .HasMaxLength(4)
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.HasIndex("BookListID");
 
-                    b.HasIndex("EducationID");
+                    b.HasIndex("HoldID");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("BookProgram.Model.Semester", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<int>("EducationID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SemesterName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TeacherID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("EducationID");
-
-                    b.HasIndex("TeacherID");
-
-                    b.ToTable("Semester");
                 });
 
             modelBuilder.Entity("BookProgram.Model.Teacher", b =>
@@ -186,21 +123,13 @@ namespace BookProgram.Migrations
                     b.ToTable("Teacher");
                 });
 
-            modelBuilder.Entity("BookProgram.Model.Holds", b =>
+            modelBuilder.Entity("BookProgram.Model.Hold", b =>
                 {
-                    b.HasOne("BookProgram.Model.Education", "Education")
-                        .WithMany()
-                        .HasForeignKey("EducationID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BookProgram.Model.Teacher", "Teacher")
                         .WithMany()
                         .HasForeignKey("TeacherID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Education");
 
                     b.Navigation("Teacher");
                 });
@@ -213,34 +142,15 @@ namespace BookProgram.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BookProgram.Model.Education", "Education")
+                    b.HasOne("BookProgram.Model.Hold", "Hold")
                         .WithMany()
-                        .HasForeignKey("EducationID")
+                        .HasForeignKey("HoldID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BookList");
 
-                    b.Navigation("Education");
-                });
-
-            modelBuilder.Entity("BookProgram.Model.Semester", b =>
-                {
-                    b.HasOne("BookProgram.Model.Education", "EducationName")
-                        .WithMany()
-                        .HasForeignKey("EducationID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BookProgram.Model.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EducationName");
-
-                    b.Navigation("Teacher");
+                    b.Navigation("Hold");
                 });
 #pragma warning restore 612, 618
         }

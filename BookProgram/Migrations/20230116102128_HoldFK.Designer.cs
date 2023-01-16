@@ -4,6 +4,7 @@ using BookProgram.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookProgram.Migrations
 {
     [DbContext(typeof(BookProgramContext))]
-    partial class BookProgramContextModelSnapshot : ModelSnapshot
+    [Migration("20230116102128_HoldFK")]
+    partial class HoldFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,18 +124,18 @@ namespace BookProgram.Migrations
                     b.Property<int>("BookListID")
                         .HasColumnType("int");
 
-                    b.Property<int>("EducationID")
+                    b.Property<int>("HoldID")
                         .HasColumnType("int");
 
-                    b.Property<string>("OrderValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderValue")
+                        .HasMaxLength(4)
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.HasIndex("BookListID");
 
-                    b.HasIndex("EducationID");
+                    b.HasIndex("HoldID");
 
                     b.ToTable("Orders");
                 });
@@ -213,15 +215,15 @@ namespace BookProgram.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BookProgram.Model.Education", "Education")
+                    b.HasOne("BookProgram.Model.Holds", "Hold")
                         .WithMany()
-                        .HasForeignKey("EducationID")
+                        .HasForeignKey("HoldID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BookList");
 
-                    b.Navigation("Education");
+                    b.Navigation("Hold");
                 });
 
             modelBuilder.Entity("BookProgram.Model.Semester", b =>
