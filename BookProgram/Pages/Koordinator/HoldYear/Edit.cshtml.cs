@@ -45,11 +45,6 @@ namespace BookProgram.Pages.Koordinator.HoldYear
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             _context.Attach(Semester).State = EntityState.Modified;
 
             try

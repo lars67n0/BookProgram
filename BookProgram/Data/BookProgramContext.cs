@@ -26,7 +26,7 @@ namespace BookProgram.Data
 
         
 
-        public DbSet<BookProgram.Model.Fag> Fag { get; set; }
+        
 
         
 

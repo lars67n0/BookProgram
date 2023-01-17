@@ -36,7 +36,7 @@ namespace BookProgram.Pages.Koordinator.BogHandler
                 return NotFound();
             }
             Orders = orders;
-           ViewData["BookListID"] = new SelectList(_context.BookList, "ID", "Author");
+           ViewData["BookListID"] = new SelectList(_context.BookList, "ID", "Title");
            ViewData["EducationID"] = new SelectList(_context.Education, "ID", "EducationName");
             return Page();
         }
@@ -45,10 +45,10 @@ namespace BookProgram.Pages.Koordinator.BogHandler
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
             _context.Attach(Orders).State = EntityState.Modified;
 

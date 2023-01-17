@@ -7,12 +7,14 @@
 
 <h1>All Book Orders In The System: </h1>
 
+
+
 <p>
     <a asp-page="Create" class="btn btn-outline-success">Create New</a>
 </p>
 
 <hr style="width: auto" , size="10" , color=black>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -22,7 +24,7 @@
                 @Html.DisplayNameFor(model => model.Orders[0].Education)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Orders[0].BookList)
+                @Html.DisplayNameFor(model => model.Orders[0].BookList.Title)
             </th>
             <th></th>
         </tr>
@@ -37,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.Education.EducationName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookList.Author)
+                @Html.DisplayFor(modelItem => item.BookList.Title)
             </td>
             <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">Edit</a> |
