@@ -30,7 +30,7 @@ namespace BookProgram.Pages.Koordinator.BogHandler
         public Orders Orders { get; set; }
         
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        
         public async Task<IActionResult> OnPostAsync()
         {
           

@@ -28,7 +28,7 @@ namespace BookProgram.Pages.Koordinator.Educations
         public Education Education { get; set; }
         
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        
         public async Task<IActionResult> OnPostAsync()
         {
           if (!ModelState.IsValid)

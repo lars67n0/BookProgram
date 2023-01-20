@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["Title"] = "Zealand";
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,21 +12,30 @@
     <link rel="stylesheet" href="~/BookProgram.styles.css" asp-append-version="true" />
 </head>
 <body>
+   
     <header>
-
+  
+</div>
+ 
         
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <img src="https://i.postimg.cc/cLpxzZ9p/Udklip.png" alt="Zealand Logo" style="width: 180px;height:70px;
         border-radius:2px; padding: 2px; margin-left:3%;" />
 
+           
+         
+         
+
+          
+
 
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="">BookProgram</a>
+                <a class="navbar-brand" id="logo" asp-area="" asp-page="">BookProgram</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="navbar-right">
                     <ul class="navbar-nav flex-grow-1">
 
                         <li class="nav-item">
@@ -37,20 +49,33 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Account/Index">Login</a>
                         </li>
-
+                        
                        
 
 
                     </ul>
+                    
                 </div>
             </div>
+
+            
+
+
         </nav>
+  
+  
     </header>
+  
     <div class="container" style="margin-top:5%;">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+
     </div>
+
+
+  
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

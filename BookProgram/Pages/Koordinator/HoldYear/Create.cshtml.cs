@@ -30,7 +30,7 @@ namespace BookProgram.Pages.Koordinator.HoldYear
         public Semester Semester { get; set; }
         
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        
         public async Task<IActionResult> OnPostAsync()
         {
           

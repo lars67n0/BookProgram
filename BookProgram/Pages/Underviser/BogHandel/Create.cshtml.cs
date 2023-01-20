@@ -21,7 +21,7 @@ namespace BookProgram.Pages.Underviser.BogHandel
 
         public IActionResult OnGet()
         {
-        ViewData["BookListID"] = new SelectList(_context.BookList, "ID", "Author");
+        ViewData["BookListID"] = new SelectList(_context.BookList, "ID", "Title");
         ViewData["EducationID"] = new SelectList(_context.Education, "ID", "EducationName");
             return Page();
         }

@@ -15,7 +15,7 @@ namespace BookProgram.Pages.Account
 
         }
 
-        public async Task<IActionResult> OnpostAsync()
+        public IActionResult Onpost()
         {
             if (!ModelState.IsValid) return Page();
 
