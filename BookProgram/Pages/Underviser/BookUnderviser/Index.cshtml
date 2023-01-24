@@ -13,7 +13,8 @@
     <a asp-page="Create" class="btn btn-outline-success">Create New</a>
 </p>
 <hr style="width: auto" , size="10" , color=black>
-<table class="table table-hover">
+
+<table class="table table-hover" style="border-left:solid; border-color:black; border-width: 10px;" >
     <thead>
         <tr>
             <th>
@@ -28,9 +29,9 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody >
 @foreach (var item in Model.BookList) {
-        <tr>
+            <tr >
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
